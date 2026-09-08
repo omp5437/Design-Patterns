@@ -1,0 +1,18 @@
+# IDE / Project Files
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+
+# Build & Compilation Outputs
+out/
+**/out/
+target/
+**/target/
+
+# System Metadata
+.DS_Store
+**/.DS_Store
+
+# Git Files (Optional - keep tracked if team sync is needed)
+/*/.gitignore
