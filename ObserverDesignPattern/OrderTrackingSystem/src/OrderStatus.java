@@ -1,0 +1,3 @@
+public enum OrderStatus {
+    PENDING,PLACED,PACKED,SHIPPED,DELIVERED
+}
