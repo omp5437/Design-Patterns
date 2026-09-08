@@ -10,13 +10,11 @@ public class BalanceCheckHandler implements PaymentHandler{
 
         if(payment.getStatus()==Status.SUFFICIENT_BALANCE){
             System.out.println("Sufficient Balance");
-            setNextHandler(new LimitCheckHandler());
             payment.setStatus(Status.VALID_LIMIT);
-            nextHandler.handle(payment);
-            return;
         }
-
-      System.out.println("Invalid Status");
+        if(nextHandler!=null){
+            nextHandler.handle(payment);
+        }
 
     }
 

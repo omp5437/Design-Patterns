@@ -11,10 +11,7 @@ public class PaymentProcessorHandler implements PaymentHandler{
         if(payment.getStatus()==Status.SUCCESS){
             System.out.println("Payment success");
             updateAuditLog(payment);
-            return;
         }
-
-        System.out.println("Invalid status");
 
     }
 

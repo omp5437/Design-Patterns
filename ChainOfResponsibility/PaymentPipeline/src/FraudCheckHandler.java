@@ -10,12 +10,10 @@ public class FraudCheckHandler implements PaymentHandler{
         if(payment.getStatus()==Status.NON_FRAUDULENT){
             System.out.println("Not a fraud attempt");
             payment.setStatus(Status.SUFFICIENT_BALANCE);
-            setNextHandler(new BalanceCheckHandler());
-            nextHandler.handle(payment);
-            return;
         }
-
-        System.out.println("Invalid State");
+        if(nextHandler!=null){
+            nextHandler.handle(payment);
+        }
     }
 
     @Override

@@ -9,13 +9,12 @@ public class LimitCheckHandler implements PaymentHandler{
 
         if(payment.getStatus()==Status.VALID_LIMIT){
             System.out.println("Valid limit");
-            setNextHandler(new PaymentProcessorHandler());
             payment.setStatus(Status.SUCCESS);
-            nextHandler.handle(payment);
-            return;
         }
 
-        System.out.println("Inavlid status");
+        if(nextHandler!=null){
+            nextHandler.handle(payment);
+        }
 
     }
 

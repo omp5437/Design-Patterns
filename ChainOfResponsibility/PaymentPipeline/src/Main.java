@@ -3,8 +3,14 @@
 public class Main {
     public static void main(String[] args) {
         Payment payment=new Payment(1,199.0,Status.NON_FRAUDULENT);
-        PaymentHandler handler=new FraudCheckHandler();
-        handler.handle(payment);
+        PaymentHandler fraudCheckHandler=new FraudCheckHandler();
+        PaymentHandler limitCheckHandler=new LimitCheckHandler();
+        PaymentHandler balanceCheckHandler=new BalanceCheckHandler();
+        PaymentHandler paymentProcessorHandler=new PaymentProcessorHandler();
+        fraudCheckHandler.setNextHandler(balanceCheckHandler);
+        balanceCheckHandler.setNextHandler(limitCheckHandler);
+        limitCheckHandler.setNextHandler(paymentProcessorHandler);
+        fraudCheckHandler.handle(payment);
 
     }
 }
